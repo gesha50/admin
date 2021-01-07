@@ -23,16 +23,13 @@ Route::get('/', function () {
 Route::group([
     'prefix' => 'dashboard',
     'as' => 'admin.',
-// Важно: эта строчка закрывает админку!
-//    'middleware' => 'auth'
-
+    'middleware' => 'auth'
 ], function () {
-    Route::get('/index', [IndexController::class, 'index'])->name('index');
+    Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
     Route::get('/tables', [IndexController::class, 'tables'])->name('tables');
     Route::get('/layoutStatic', [IndexController::class, 'layoutStatic'])->name('layoutStatic');
     Route::get('/layoutSidenav', [IndexController::class, 'layoutSidenav'])->name('layoutSidenav');
-
 });
 
 
